@@ -29,7 +29,7 @@ pipeline
 	    {
 	      withMaven(maven: 'MAVEN_HOME')
 	      {
-	        sh 'mvn deploy'
+	        sh 'mvn install'
 	      }
 	    }
 	  }
