@@ -1,6 +1,6 @@
 pipeline
 {
-	agent any
+	agent any	
 	stages
 	{
 	  stage('Compile Stage')
@@ -9,7 +9,7 @@ pipeline
 	    {
 	      withMaven(maven: 'MAVEN_HOME')
 	      {
-	      	sh 'mvn clean compile'
+			sh 'mvn clean compile'
 	      }
 	    }
 	  }
@@ -23,7 +23,17 @@ pipeline
 	      }
 	    }
 	  }
-	  stage('Deploying Stage')
+	  stage('Package Stage')
+	  {
+	    steps
+	    {
+	      withMaven(maven: 'MAVEN_HOME')
+	      {
+	        sh 'mvn package'
+	      }
+	    }
+	  }
+	  stage('Install Stage')
 	  {
 	    steps
 	    {
