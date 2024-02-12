@@ -62,11 +62,11 @@ pipeline
                     
 	    }
 	  }
-       stage('Push The Image into DockerHub Account')
+      stage('Push The Image into DockerHub Account')
        {
          steps
          {
-            sh 'docker push lehardocker/webapp'              
+            sh 'docker push lehardocker/web-app-project'              
          }
        }
 
