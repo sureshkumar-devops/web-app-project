@@ -1,6 +1,6 @@
 pipeline
 {
-	agent any	
+	agent any	   
 	stages
 	{
 	  stage('Compile Stage')
@@ -41,6 +41,13 @@ pipeline
 	      {
 	        sh 'mvn install'
 	      }
+	    }
+	  }
+      stage('Docker Build Stage')
+	  {
+	    steps
+	    {      
+	        sh 'docker build -t webapp .'            	      
 	    }
 	  }
 	}
