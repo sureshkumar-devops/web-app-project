@@ -44,12 +44,4 @@ pipeline
 	    }
 	  }
 	}
-	post
-	{
-		always
-		{
-			sh echo 'Always Successfully Executed'
-			sh 'hostname'
-		} 
-	}
 }
