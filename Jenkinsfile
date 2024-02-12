@@ -54,16 +54,21 @@ pipeline
 	            sh 'docker build -t webapp:$BUILD_NUMBER .'            	      
 	    }
 	  }
-      stage('Docker Image Push into DockerHub')
+      stage('Login to DockerHub Account')
 	  {
 	    steps
 	    {      
 	       sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'           
-           sh 'docker push lehardocker/webapp:$BUILD_NUMBER'
-           
+                    
 	    }
 	  }
-      
+       stage('Push The Image into DockerHub Account')
+       {
+         steps
+         {
+            sh 'docker push lehardocker/webapp:$BUILD_NUMBER'              
+         }
+       }
 
 	}
 }
