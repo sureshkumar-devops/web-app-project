@@ -3,7 +3,7 @@ pipeline
 	agent any	
       environment {
         DOCKERHUB_CREDENTIALS = credentials('lehar-dockerhub-token')
-        DATE = new Date().format('yy.M')
+        DATE = new Date().format('M.yyyy')
         TAG = "${DATE}.${BUILD_NUMBER}"
     }   
 	stages
