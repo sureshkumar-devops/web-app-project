@@ -48,7 +48,7 @@ pipeline
 	{
 		always
 		{
-			sh 'echo Always Successfully Executed'
+			sh echo 'Always Successfully Executed'
 			sh 'hostname'
 		} 
 	}
