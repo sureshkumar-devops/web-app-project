@@ -51,7 +51,7 @@ pipeline
 	  {
 	    steps
 	    {     
-	            sh 'docker build -t webapp:$BUILD_NUMBER .'            	      
+	            sh 'docker build -t web-app-project:$BUILD_NUMBER .'            	      
 	    }
 	  }
       stage('Login to DockerHub Account')
@@ -66,7 +66,7 @@ pipeline
        {
          steps
          {
-            sh 'docker push lehardocker/webapp:$BUILD_NUMBER'              
+            sh 'docker push lehardocker/web-app-project:$BUILD_NUMBER'              
          }
        }
 
