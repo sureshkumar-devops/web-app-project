@@ -1,6 +1,11 @@
 pipeline
 {
-	agent any	   
+	agent any	
+      environment {
+        DOCKERHUB_CREDENTIALS = credentials('lehar-dockerhub-token')
+        DATE = new Date().format('yy.M')
+        TAG = "${DATE}.${BUILD_NUMBER}"
+    }   
 	stages
 	{
 	  stage('Compile Stage')
@@ -46,8 +51,17 @@ pipeline
       stage('Docker Build Stage')
 	  {
 	    steps
+	    {     
+	            sh 'docker build -t webapp:${TAG} .'            	      
+	    }
+	  }
+      stage('Docker Image Push into DockerHub')
+	  {
+	    steps
 	    {      
-	        sh 'docker build -t webapp .'            	      
+
+	       sh 'echo $DOCKERHUB_CREDENTIALS_PWD | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+           sh 'docker push lehardocker/webapp:${TAG}'
 	    }
 	  }
 	}
