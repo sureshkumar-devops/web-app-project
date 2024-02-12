@@ -66,7 +66,7 @@ pipeline
        {
          steps
          {
-            sh 'docker push lehardocker/web-app-project:$BUILD_NUMBER'              
+            sh 'docker push lehardocker/webapp:$BUILD_NUMBER'              
          }
        }
 
